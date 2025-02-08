@@ -1,0 +1,247 @@
+#hall-search {
+    background-color: var(--bg-color);
+    border-radius: var(--border-radius);
+    border: 1px solid #ddd1;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    overflow: hidden;
+    background-color: var(--bg-color-2);
+    border-radius: var(--border-radius);
+    color-scheme: dark;
+}
+
+.search-form form {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    width: 100%;
+    padding: 2rem;
+
+}
+
+.search-form form .input-box {
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    gap: 0.5rem;
+    min-width: 10rem;
+    justify-content: center;
+}
+
+.search-form form .input-box label {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-light);
+
+}
+
+.search-form form .input-box select, .search-form form .input-box input {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    min-width: 15rem;
+    border: 1px solid var(--gray);
+    border-radius: var(--border-radius);
+    color-scheme: dark;
+    color: var(--text-light-2);
+    background-color: var(--bg-color);
+}
+
+.search-form form .input-box button {
+    padding: 0.5rem 2rem;
+    height: 3rem;
+    width: 100%;
+    border: none;
+    background-color: var(--white);
+    color: var(--dark);
+    font-weight: 600;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.search-form form .input-box select option {
+    padding: 0.5rem;
+
+}
+
+
+.search-form form .input-box button:hover {
+    background-color: var(--text-light-2);
+}
+
+.search-form form .input-box button:disabled {
+    background-color: var(--gray);
+    cursor: not-allowed;
+}
+
+.search-form form .input-box button:disabled:hover {
+    background-color: var(--gray);
+}
+
+#hall-results {
+    padding: 0;
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+#hall-results .left, #hall-results .right {
+    background-color: var(--bg-color);
+    border-radius: var(--border-radius);
+    border: 1px solid #ddd1;
+    padding: 1rem;
+}
+
+#hall-results .left {
+    width: 20rem;
+    min-height: calc(100vh - 25rem);
+}
+
+#hall-results .right {
+    width: calc(100% - 20rem - 1rem);
+}
+
+.hall-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.hall-list .hall {
+    border-radius: var(--border-radius);
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+
+}
+
+.hall-list .hall .hall-img {
+    height: 20rem;
+    overflow: hidden;
+    aspect-ratio: 1/1;
+    border-radius: var(--border-radius);
+}
+
+.hall-list .hall .hall-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hall-list .hall .hall-info {
+    width: calc(100% - 250px - 1rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 0.5rem;
+    padding: 0 1rem;
+    height: 100%;
+}
+
+.hall-list .hall .hall-info .hall-title {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+
+.hall-info .ratings {
+    display: flex;
+    align-items: center;
+    column-gap: 0.75rem;
+}
+
+.hall-info .ratings .rate {
+    background-color: var(--primary);
+    color: var(--white);
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0.3rem 0.4rem;
+    border-radius: var(--border-radius);
+}
+
+.hall-info .ratings .rate-text {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-light);
+}
+
+.hall-info .ratings .num-rate {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-light-2);
+}
+
+
+.hall-list .hall .hall-info .hall-title h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--primary);
+    text-align: left;
+    width: 100%;
+}
+
+.hall-list .hall .hall-info .hall-title p {
+    font-size: 0.9rem;
+    color: var(--text-light-2);
+    line-height: 1.75;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    text-align: left;
+    width: 100%;
+    -webkit-box-orient: vertical;
+
+}
+
+
+.hall-list .hall .hall-info .hall-features {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.hall-list .hall .hall-info .hall-features p {
+    color: var(--text-light-2);
+    font-weight: 600;
+    font-size: 0.9rem;
+    width: 100%;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hall-list .hall .hall-info .hall-features p span {
+
+}
+
+
+.hall-list .hall .hall-info .button {
+    height: 2rem !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-height: 3rem;
+}
+
+
+@media (prefers-color-scheme: dark) {
+
+}
+
+@media screen and (max-width: 768px) {
+
+
+}

@@ -1,0 +1,470 @@
+section#dashboard {
+    position: relative;
+    max-width: 100%;
+    width: 100%;
+    padding: 0;
+    height: calc(100vh - 4rem - 1px);
+    display: flex;
+    justify-content: space-between;
+}
+
+#dashboard .side-menu {
+    width: 18rem;
+    height: 100%;
+    background-color: var(--bg-color);
+    overflow: auto;
+    padding: 1rem;
+}
+
+#dashboard .side-menu .title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem;
+}
+
+#dashboard .side-menu .title h2 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--white);
+}
+
+#dashboard .side-menu .profile-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    row-gap: 0.5rem;
+}
+
+#dashboard .side-menu .profile-info .user-img {
+    padding: 0.5rem;
+}
+
+#dashboard .side-menu .profile-info .user-img img {
+    width: 6.5rem;
+    height: 6.5rem;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+#dashboard .side-menu .profile-info .user-type h3 {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--white);
+    padding: 0.15rem 0.75rem;
+    border-radius: var(--border-radius);
+}
+
+#dashboard .side-menu .profile-info .user-type.admin h3 {
+    background-color: var(--success);
+}
+
+#dashboard .side-menu .profile-info .user-type.user h3 {
+    background-color: var(--secondary);
+}
+
+#dashboard .side-menu .profile-info > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#dashboard .side-menu .profile-info .user-name h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-light);
+}
+
+#dashboard .side-menu .profile-info .since-date {
+    padding: 0;
+}
+
+#dashboard .side-menu .profile-info .since-date p {
+    font-size: 0.7rem;
+    color: var(--gray);
+    padding: 0;
+    line-height: 0.5;
+}
+
+#dashboard .side-menu .menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 1rem 0;
+}
+
+#dashboard .side-menu .menu ul {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+#dashboard .side-menu .menu ul li {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+
+}
+
+#dashboard .side-menu .menu ul li a {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding: 0.75rem;
+    width: 100%;
+    border-radius: var(--border-radius);
+    color: var(--white);
+    font-size: 1rem;
+    font-weight: 600;
+    transition: var(--transition);
+    border: 2px solid transparent;
+}
+
+#dashboard .side-menu .menu ul li.active a {
+    background-color: #55f1;
+    color: var(--primary);
+}
+
+#dashboard .side-menu .menu ul li a:hover {
+    border: 2px solid var(--primary);
+}
+
+#dashboard .content {
+    width: calc(100% - 18rem);
+    height: 100%;
+    padding: 4rem;
+    overflow: auto;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+#dashboard .content::-webkit-scrollbar {
+    display: none;
+}
+
+#dashboard .content .title {
+    display: flex;
+    row-gap: 0.5rem;
+    flex-direction: column;
+
+}
+
+#dashboard .content .title h2, #dashboard .content .title h2 span {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--white);
+    display: flex;
+    justify-content: space-between;
+}
+
+#dashboard .content .title p {
+    font-size: 0.9rem;
+    color: var(--gray);
+    line-height: 175%;
+}
+
+#dashboard .content > .cont {
+    width: 100%;
+    flex-direction: row;
+    gap: 1rem;
+    padding-top: 1rem;
+    flex-wrap: wrap;
+    overflow: auto;
+    max-height: calc(100% - 10px);
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+#dashboard .content .cont::-webkit-scrollbar {
+    display: none;
+}
+
+
+#dashboard .content .cont .card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    align-items: center;
+    justify-content: center;
+    width: calc(25% - 3rem / 4);
+    min-height: 10rem;
+    padding: 1rem;
+    height: 10rem;
+    min-width: 12rem;
+    border-radius: var(--border-radius);
+    border: 2px solid var(--bg-color);
+    background-color: var(--bg-color);
+    transition: var(--transition);
+}
+
+#dashboard .content .cont .card:hover {
+    background-color: var(--bg-color-hover);
+    cursor: pointer;
+    border: 2px solid var(--primary);
+}
+
+
+#dashboard .content .cont .card > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#dashboard .content .cont .card div h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--text-light);
+    transition: var(--transition);
+}
+
+#dashboard .content .cont .card:hover div h3 {
+    color: var(--primary);
+}
+
+#dashboard .content .cont .card div p {
+    font-size: 0.9rem;
+    color: var(--gray);
+}
+
+#dashboard .content .header {
+    padding-top: 1rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#dashboard .content .header > div, #dashboard .content .header .search-bar .search-box {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+#dashboard .content .header .search-bar .search-box input {
+    height: 2rem;
+}
+
+#dashboard .content .dashcont {
+    margin-top: 1rem;
+    overflow: auto;
+    height: calc(100% - 10px - 3rem);
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+#dashboard .content .dashcont::-webkit-scrollbar {
+    display: none;
+}
+
+#dashboard .content .dashcont table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+#dashboard .content .dashcont table thead {
+    background-color: var(--bg-color);
+    color: var(--text-light);
+}
+
+#dashboard .content .dashcont table thead th {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+    border-bottom: 2px solid var(--bg-color);
+}
+
+#dashboard .content .dashcont table tbody tr {
+    background-color: var(--bg-color-2);
+    color: var(--text-light);
+    transition: var(--transition);
+
+}
+
+#dashboard .content .dashcont table tbody tr:hover {
+    background-color: var(--primary);
+}
+
+#dashboard .content .dashcont table tbody tr td {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    text-align: center;
+
+}
+
+#dashboard .content .dashcont table tbody tr td img {
+    height: 5rem;
+    object-fit: cover;
+
+}
+
+#dashboard .content .dashcont table tbody tr td.tbl_action {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    height: 100%;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#dashboard .content .dashcont table tbody tr td.status span {
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--border-radius);
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+#dashboard .content .dashcont table tbody tr td.status span.pending {
+    background-color: var(--secondary);
+    color: var(--white);
+}
+
+#dashboard .content .dashcont table tbody tr td.status span.approved {
+    background-color: var(--success);
+    color: var(--white);
+}
+
+#dashboard .content .dashcont table tbody tr td.status span.rejected {
+    background-color: var(--danger);
+    color: var(--white);
+}
+
+#dashboard .content .cont .hall {
+    width: 100%;
+}
+
+#dashboard .content .cont .hall .hall-info {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+#dashboard .content .cont .hall .hall-info p {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-light);
+}
+
+#dashboard .content .cont .hall .actions {
+    margin: 1rem 0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+#dashboard .content .cont form, .myform {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+#dashboard .content .cont form .input-box, .myform .input-box {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.1rem;
+
+}
+
+#dashboard .content .cont form .input-box label, .myform .input-box label {
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+#dashboard .content .cont form .input-box .error, .myform .input-box .error {
+    font-size: 0.9rem;
+    color: var(--danger);
+    font-style: italic;
+}
+
+#dashboard .content .cont form .input-box input, #dashboard .content .cont form .input-box select, #dashboard .content .cont form .input-box textarea, .myform .input-box input, .myform .input-box select, .myform .input-box textarea {
+    height: 3rem;
+    padding: 0.5rem;
+    border-radius: var(--border-radius);
+    border: 2px solid var(--bg-color);
+    background-color: var(--bg-color);
+    color: var(--text-light);
+    font-size: 1rem;
+    transition: var(--transition);
+    color-scheme: dark;
+}
+
+#dashboard .content .cont form .input-box textarea, .myform .input-box textarea {
+    min-height: 4rem;
+    max-height: 10rem;
+}
+
+#dashboard .content .cont form .input-box button, .myform .input-box button {
+    height: 3rem;
+    max-height: 3rem;
+    padding: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+#dashboard .content .cont .booking, #dashboard .content .cont .user {
+    width: 100%;
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+#dashboard .content .cont .booking .booking-info, #dashboard .content .cont .user .user-info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+}
+
+#dashboard .content .cont .booking .booking-info p, #dashboard .content .cont .user .user-info p {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-light);
+}
+
+
+#dashboard .content .cont .booking .booking-info p span, #dashboard .content .cont .user .user-info p span {
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--border-radius);
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+#dashboard .content .cont .booking .booking-info p span.pending, #dashboard .content .cont .user .user-info p span.pending {
+    background-color: var(--secondary);
+    color: var(--white);
+}
+
+#dashboard .content .cont .booking .booking-info p span.approved, #dashboard .content .cont .user .user-info p span.approved {
+    background-color: var(--success);
+    color: var(--white);
+}
+
+#dashboard .content .cont .booking .booking-info p span.rejected, #dashboard .content .cont .user .user-info p span.rejected {
+    background-color: var(--danger);
+    color: var(--white);
+}
+
+#dashboard .content .cont .booking .actions, #dashboard .content .cont .user .actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}

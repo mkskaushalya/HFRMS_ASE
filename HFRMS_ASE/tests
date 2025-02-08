@@ -1,0 +1,76 @@
+<?php
+
+namespace Tests\Feature;
+
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
+
+class HallLocationsTest extends TestCase
+{
+    use RefreshDatabase;
+
+    /** @test */
+    public function it_can_create_a_hall_location()
+    {
+        $response = $this->post('/api/hall-locations', [
+            'location' => 'Main Hall',
+            'status' => 'active',
+        ]);
+
+        $response->assertStatus(201);
+        $this->assertDatabaseHas('hall_locations', [
+            'location' => 'Main Hall',
+            'status' => 'active',
+        ]);
+    }
+
+    /** @test */
+    public function it_can_retrieve_hall_locations()
+    {
+        $this->post('/api/hall-locations', [
+            'location' => 'Main Hall',
+            'status' => 'active',
+        ]);
+
+        $response = $this->get('/api/hall-locations');
+
+        $response->assertStatus(200);
+        $response->assertJsonFragment(['location' => 'Main Hall']);
+    }
+
+    /** @test */
+    public function it_can_update_a_hall_location()
+    {
+        $hallLocation = \App\Models\HallLocation::create([
+            'location' => 'Main Hall',
+            'status' => 'active',
+        ]);
+
+        $response = $this->put("/api/hall-locations/{$hallLocation->id}", [
+            'location' => 'Updated Hall',
+            'status' => 'inactive',
+        ]);
+
+        $response->assertStatus(200);
+        $this->assertDatabaseHas('hall_locations', [
+            'location' => 'Updated Hall',
+            'status' => 'inactive',
+        ]);
+    }
+
+    /** @test */
+    public function it_can_delete_a_hall_location()
+    {
+        $hallLocation = \App\Models\HallLocation::create([
+            'location' => 'Main Hall',
+            'status' => 'active',
+        ]);
+
+        $response = $this->delete("/api/hall-locations/{$hallLocation->id}");
+
+        $response->assertStatus(204);
+        $this->assertDatabaseMissing('hall_locations', [
+            'id' => $hallLocation->id,
+        ]);
+    }
+}

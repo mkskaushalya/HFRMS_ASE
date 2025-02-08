@@ -1,0 +1,19 @@
+<?php
+
+namespace Database\Factories;
+
+use App\Models\HallLocation;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+class HallLocationFactory extends Factory
+{
+    protected $model = HallLocation::class;
+
+    public function definition()
+    {
+        return [
+            'location' => $this->faker->city,
+            'status' => 'active',
+        ];
+    }
+}

@@ -1,3 +1,15 @@
+@import "daterangepicker";
+@import "root.css";
+@import "home.css";
+@import "booking.css";
+@import "dashboard.css";
+@import 'halls.css';
+@import "hall.css";
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Custom CSS */
+

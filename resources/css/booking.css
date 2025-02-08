@@ -1,0 +1,178 @@
+
+#hallBookingPage .cont {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 3rem;
+    width: 100%;
+}
+
+#hallBookingPage .cont .left {
+    width: calc(60% - 1.5rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+
+#hallBookingPage .cont .left .myform {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+}
+
+#hallBookingPage .cont .left .myform .input-box {
+    width: calc(50% - 0.5rem);
+}
+
+#hallBookingPage .cont .left .myform .input-box input.pending {
+    color: var(--warning-alert-color);
+    background-color: var(--warning-alert-background-color);
+    border-color: var(--warning-alert-border-color);
+    font-weight: 600;
+}
+
+#hallBookingPage .cont .left .myform .input-box .ratio-items {
+    display: flex;
+    align-items: center;
+
+    gap: 0.5rem;
+    height: 100%;
+}
+
+#hallBookingPage .cont .left .myform .input-box .ratio-items input {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+#hallBookingPage .cont .left .myform .input-box .ratio-items label {
+    font-size: 1.5rem;
+    color: var(--white);
+}
+
+#hallBookingPage .cont .left .myform .input-box.action-btn-form {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+#hallBookingPage .cont .left .myform .input-box.action-btn-form .button {
+    width: calc(50% - 0.5rem);
+}
+
+
+#hallBookingPage .cont .right {
+    width: calc(40% - 1.5rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
+    padding: 2rem 0;
+
+}
+
+#hallBookingPage .cont .right .review-box {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 2rem;
+    border: 1px solid var(--bg-color);
+    border-radius: var(--border-radius);
+}
+
+#hallBookingPage .cont .right .review-box .hall-card {
+    width: 100%;
+
+}
+
+#hallBookingPage .cont .right .review-box > div {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1rem;
+
+}
+
+#hallBookingPage .cont .right .review-box > div > div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#hallBookingPage .cont .right .review-box > div > div h4 {
+    font-size: 1.1rem;
+    color: var(--text-light);
+}
+
+#hallBookingPage .cont .right .review-box > div.total-price-details > div h4 {
+    font-size: 1.2rem;
+    color: var(--white);
+    font-weight: 600;
+}
+
+#hallBookingPage .cont .right .review-box > div.total-price-details {
+    border-bottom: 4px double var(--bg-color-2) !important;
+    padding-bottom: 1rem;
+}
+
+#hallBookingPage .cont .right .review-box > div.total-price-details > div p {
+    font-size: 1.3rem;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+
+#bookingSuccess {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+    margin-bottom: -2rem;
+}
+
+#bookingSuccess .cont {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+#bookingSuccess .cont .alert-success {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    border: 2px solid var(--success-alert-color);
+    border-radius: var(--border-radius);
+    color: var(--success);
+    background-color: #2ECC7122;
+}
+
+#bookingSuccess .cont .alert-success h2 {
+    font-size: 1.7rem;
+    font-weight: 600;
+    color: var(--success);
+}
+
+#bookingSuccess .cont .alert-success p {
+    color: var(--text-light);
+    font-weight: 600;
+}

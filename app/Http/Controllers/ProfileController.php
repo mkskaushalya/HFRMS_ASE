@@ -32,6 +32,20 @@ class ProfileController extends Controller
             $request->user()->email_verified_at = null;
         }
 
+        if ($request->hasFile('profile_picture')) {
+            if ($request->user()->profile_picture) {
+                unlink(public_path($request->user()->profile_picture));
+            }
+            $image = $request->file('profile_picture');
+            $extension = $image->getClientOriginalExtension();
+            $filename = $request->user()->firstname . "_" . time() . '.' . $extension;
+            $path = "img/users/";
+
+            $image->move($path, $filename);
+
+            $request->user()->profile_picture = $path . $filename;
+        }
+
         $request->user()->save();
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
@@ -42,9 +56,14 @@ class ProfileController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
+
         $request->validateWithBag('userDeletion', [
             'password' => ['required', 'current_password'],
         ]);
+
+        if ($request->user()->profile_picture) {
+            unlink(public_path($request->user()->profile_picture));
+        }
 
         $user = $request->user();
 
