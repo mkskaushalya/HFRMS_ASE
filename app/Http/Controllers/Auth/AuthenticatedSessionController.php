@@ -29,9 +29,9 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect($request->previousUrl);
+        // return redirect($request->previousUrl);
 
-//        return redirect()->intended(route('dashboard', absolute: false));
+        return redirect()->intended(route('dashboard', absolute: false));
     }
 
     /**
@@ -46,6 +46,6 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerateToken();
 
         return redirect(url()->previous());
-//        return redirect('/');
+        //        return redirect('/');
     }
 }
