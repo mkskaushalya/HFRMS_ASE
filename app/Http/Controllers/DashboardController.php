@@ -126,7 +126,11 @@ class DashboardController extends Controller
             //Delete the old image
             $old_image = $hall->image;
             $old_image = str_replace('img/halls/', '', $old_image);
-            unlink('img/halls/' . $old_image);
+
+            #check if the image exists
+            if (file_exists('img/halls/' . $old_image)){
+                unlink('img/halls/' . $old_image);
+            }
 
             $image = request()->file('image');
             $extension = $image->getClientOriginalExtension();

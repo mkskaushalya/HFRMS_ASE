@@ -26,27 +26,28 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        $request->user()->fill($request->validated());
+        $user = $request->user();
+        $user->fill($request->validated());
 
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
+        if ($user->isDirty('email')) {
+            $user->email_verified_at = null;
         }
 
         if ($request->hasFile('profile_picture')) {
-            if (file_exists(public_path(Auth::user()->profile_picture))) {
-                unlink(public_path(Auth::user()->profile_picture));
+            if (file_exists(public_path($user->profile_picture))) {
+                unlink(public_path($user->profile_picture));
             }
             $image = $request->file('profile_picture');
             $extension = $image->getClientOriginalExtension();
-            $filename = $request->user()->firstname . "_" . time() . '.' . $extension;
+            $filename = $user->firstname . "_" . time() . '.' . $extension;
             $path = "img/users/";
 
             $image->move($path, $filename);
 
-            $request->user()->profile_picture = $path . $filename;
+            $user->profile_picture = $path . $filename;
         }
 
-        $request->user()->save();
+        $user->save();
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
@@ -56,7 +57,6 @@ class ProfileController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
-
         $request->validateWithBag('userDeletion', [
             'password' => ['required', 'current_password'],
         ]);

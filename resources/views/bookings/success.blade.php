@@ -132,7 +132,7 @@
                     <div class="review-box" id="review-box">
                         <a class="hall-card" href="{{ route('halls.show', $hall) }}">
                             <div class="hall-image">
-                                <img src="{{ $hall->image }}" alt="{{ $hall->name }}">
+                                <img src="{{ url($hall->image) }}" alt="{{ $hall->name }}">
                             </div>
                             <div class="hall-title">
                                 <h3>{{ $hall->name }}</h3>

@@ -45,7 +45,7 @@
                                 @method('PATCH')
                             </form>
                         @endif
-
+                        @if ($booking->status == 'pending' && $usertype == 'user')
                         <button onclick="location.href ='{{ route('dashboard.bookings.edit', $booking) }}';"
                                 class="button edit">
                             Edit
@@ -54,7 +54,7 @@
                                 onclick="return confirm('Are you sure you want to delete this booking?')"
                                 form="delete_booking_{{$booking->id }}">Delete
                         </button>
-
+                       
                         <form id="delete_booking_{{$booking->id}}"
                               action="{{ route('dashboard.bookings.destroy', $booking) }}"
                               method="POST"
@@ -62,6 +62,7 @@
                             @csrf
                             @method('DELETE')
                         </form>
+                        @endif
                     </div>
                 </div>
             </div>

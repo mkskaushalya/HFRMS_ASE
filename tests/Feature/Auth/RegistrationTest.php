@@ -4,6 +4,7 @@ namespace Tests\Feature\Auth;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use App\Models\User;
 
 class RegistrationTest extends TestCase
 {
@@ -18,14 +19,34 @@ class RegistrationTest extends TestCase
 
     public function test_new_users_can_register(): void
     {
+        //copy test image to new location
+        copy(resource_path('img/test.jpg'), resource_path('img/test2.jpg'));
         $response = $this->post('/register', [
-            'name' => 'Test User',
+            'firstname' => 'Test',
+            'lastname' => 'User',
+            'phone' => '1234567890',
+            'address' => '123 Test Street',
             'email' => 'test@example.com',
             'password' => 'password',
             'password_confirmation' => 'password',
+            'profile_picture' => new \Illuminate\Http\UploadedFile(
+                resource_path('img/test2.jpg'), // Correct file path as a string
+                'profile_picture.jpg',
+                'image/jpeg',
+                null,
+                true
+            ),
         ]);
 
-        $this->assertAuthenticated();
-        $response->assertRedirect(route('dashboard', absolute: false));
+        $this->assertDatabaseHas('users', [
+            'email' => 'test@example.com',
+        ]);
+
+        $user = User::where('email', 'test@example.com')->first();
+        $this->assertNotNull($user);
+
+        $this->assertAuthenticatedAs($user);
+        $response->assertRedirect(route('dashboard'));
+
     }
 }

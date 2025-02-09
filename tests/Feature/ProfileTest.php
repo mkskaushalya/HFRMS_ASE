@@ -12,23 +12,40 @@ class ProfileTest extends TestCase
 
     public function test_profile_page_is_displayed(): void
     {
-        $user = User::factory()->create();
+        $user = User::factory()->create([
+            'firstname' => 'Sahan',
+            'lastname' => 'Kaushalya',
+            'phone' => '0787520742',
+            'profile_picture' => '/img/avatar.png',
+            'address' => 'Kosgama, Sri Lanka',
+            'email' => 'mkskaushalya@gmail.com',
+            'password' => bcrypt('12345678'),
+        ]);
 
-        $response = $this
-            ->actingAs($user)
-            ->get('/profile');
+        $response = $this->actingAs($user)->get('/profile');
 
         $response->assertOk();
     }
 
     public function test_profile_information_can_be_updated(): void
     {
-        $user = User::factory()->create();
+        $user = User::factory()->create([
+            'firstname' => 'Sahan',
+            'lastname' => 'Kaushalya',
+            'phone' => '0787520742',
+            'profile_picture' => '/img/avatar.png',
+            'address' => 'Kosgama, Sri Lanka',
+            'email' => 'mkskaushalya@gmail.com',
+            'password' => bcrypt('12345678'),
+        ]);
 
         $response = $this
             ->actingAs($user)
             ->patch('/profile', [
-                'name' => 'Test User',
+                'firstname' => 'Test',
+                'lastname' => 'User',
+                'phone' => '0787520742',
+                'address' => 'Kosgama, Sri Lanka',
                 'email' => 'test@example.com',
             ]);
 
@@ -38,7 +55,8 @@ class ProfileTest extends TestCase
 
         $user->refresh();
 
-        $this->assertSame('Test User', $user->name);
+        $this->assertSame('Test', $user->firstname);
+        $this->assertSame('User', $user->lastname);
         $this->assertSame('test@example.com', $user->email);
         $this->assertNull($user->email_verified_at);
     }
@@ -50,7 +68,10 @@ class ProfileTest extends TestCase
         $response = $this
             ->actingAs($user)
             ->patch('/profile', [
-                'name' => 'Test User',
+                'firstname' => 'Test',
+                'lastname' => 'User',
+                'phone' => '0787520742',
+                'address' => 'Kosgama, Sri Lanka',
                 'email' => $user->email,
             ]);
 
