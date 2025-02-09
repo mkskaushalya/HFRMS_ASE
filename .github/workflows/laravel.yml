@@ -25,10 +25,10 @@ jobs:
         run: sudo service mysql start
       - name: Create Database
         run: |
-          mysql -e 'CREATE DATABASE hfrms_ase;'
-          mysql -e "CREATE USER 'root'@'localhost' IDENTIFIED BY '';"
-          mysql -e "GRANT ALL PRIVILEGES ON hfrms_ase.* TO 'root'@'localhost';"
-          mysql -e 'FLUSH PRIVILEGES;'
+          sudo mysql -e 'CREATE DATABASE hfrms_ase;'
+          sudo mysql -e "CREATE USER 'root'@'localhost' IDENTIFIED BY '';"
+          sudo mysql -e "GRANT ALL PRIVILEGES ON hfrms_ase.* TO 'root'@'localhost';"
+          sudo mysql -e 'FLUSH PRIVILEGES;'
       - name: Import Database
         run: mysql hfrms_ase < database/hfrms_ase.sql
       - name: Generate key
