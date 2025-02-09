@@ -20,7 +20,10 @@ jobs:
       - name: Install Dependencies
         run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
       - name: Install MySQL
-        run: sudo apt-get install mysql-server
+        run: |
+          sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password MySql@1234'
+          sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password MySql@1234'
+          sudo apt-get install -y mysql-server
       - name: Start MySQL service
         run: sudo service mysql start
       - name: Create MySQL Config File
