@@ -6,6 +6,7 @@ use App\Http\Controllers\HallBookingController;
 use App\Http\Controllers\HallBookingTempController;
 use App\Http\Controllers\HallController;
 use App\Http\Controllers\HallImageController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReviewController;
 use App\Models\Hall;
@@ -15,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 //Static Pages
 Route::view('home', 'index');
-Route::view('/', 'index', ['locations' => HallLocation::all(), 'halls' => Hall::all(), 'reviews' => Review::latest()->take(10)->get(), 'review_count' => Review::all()->count()])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::view('about', 'about')->name('about');
 Route::view('contact', 'contact')->name('contact');
 
@@ -24,8 +25,6 @@ Route::view('contact', 'contact')->name('contact');
 Route::controller(HallController::class)->group(function () {
     Route::get('halls', 'index')->name('halls');
     Route::get('halls/{hall}', 'show')->name('halls.show');
-
-
 });
 
 Route::controller(HallBookingTempController::class)->group(function () {
@@ -81,7 +80,6 @@ Route::controller(DashboardController::class)->group(function () {
     Route::patch('dashboard/bookings/{booking}/approve', 'approveBooking')->middleware(['auth', 'verified'])->name('dashboard.bookings.approve');
     Route::patch('dashboard/bookings/{booking}/reject', 'rejectBooking')->middleware(['auth', 'verified'])->name('dashboard.bookings.reject');
     Route::delete('dashboard/bookings/{booking}', 'destroyBooking')->middleware(['auth', 'verified'])->name('dashboard.bookings.destroy');
-
 });
 
 //Hall Image Routes
