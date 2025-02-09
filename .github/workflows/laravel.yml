@@ -30,10 +30,10 @@ jobs:
           echo "password=MySql@1234" >> ~/.my.cnf
       - name: Create Database
         run: |
-          sudo mysql --defaults-file=~/.my.cnf -e 'CREATE DATABASE hfrms_ase;'
-          sudo mysql --defaults-file=~/.my.cnf -e "CREATE USER 'root'@'localhost' IDENTIFIED BY 'MySql@1234';"
-          sudo mysql --defaults-file=~/.my.cnf -e "GRANT ALL PRIVILEGES ON hfrms_ase.* TO 'root'@'localhost';"
-          sudo mysql --defaults-file=~/.my.cnf -e 'FLUSH PRIVILEGES;'
+          mysql --defaults-file=~/.my.cnf -e 'CREATE DATABASE hfrms_ase;'
+          mysql --defaults-file=~/.my.cnf -e "CREATE USER 'root'@'localhost' IDENTIFIED BY 'MySql@1234';"
+          mysql --defaults-file=~/.my.cnf -e "GRANT ALL PRIVILEGES ON hfrms_ase.* TO 'root'@'localhost';"
+          mysql --defaults-file=~/.my.cnf -e 'FLUSH PRIVILEGES;'
       - name: Import Database
         run: mysql hfrms_ase < database/hfrms_ase.sql
       - name: Generate key
