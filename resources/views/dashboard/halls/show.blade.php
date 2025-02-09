@@ -11,13 +11,14 @@
         <x-slot:header>{{ __('Dashboard') }} </x-slot:header>
         <x-slot:contentTitle> {{ __($hall->name) }}</x-slot:contentTitle>
         <x-slot:contentDescription> {{ __($hall->description) }}</x-slot:contentDescription>
-        @if($usertype == 'admin')
+        @if ($usertype == 'admin')
             <div class="cont">
                 <div class="hall">
                     <div class="hall-img">
-                        <img src="{{ asset('images/hall.jpg') }}" alt="">
+                        <img src="{{ url($hall->image) }}" alt=""
+                            style="width: 100%; max-height: 250px; object-fit: cover;">
                     </div>
-                    <div class="hall-info">
+                    <div class="hall-info" style="padding: 40px 0 20px 0;">
                         <p>Location : {{ $hall->hallLocation->location }}</p>
                         <p>Hall Number : {{ $hall->hall_number }}</p>
                         <p>Capacity : {{ $hall->capacity }}</p>
@@ -30,11 +31,11 @@
                                 <!-- Swiper -->
 
                                 <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff"
-                                     class="swiper mySwiper2">
+                                    class="swiper mySwiper2">
                                     <div class="swiper-wrapper">
-                                        @foreach($hall->hallImages as $image)
+                                        @foreach ($hall->hallImages as $image)
                                             <div class="swiper-slide">
-                                                <img src="{{  $image->url }}"/>
+                                                <img src="{{ url($image->url) }}" />
                                             </div>
                                         @endforeach
 
@@ -44,9 +45,9 @@
                                 </div>
                                 <div thumbsSlider="" class="swiper mySwiper">
                                     <div class="swiper-wrapper">
-                                        @foreach($hall->hallImages as $image)
+                                        @foreach ($hall->hallImages as $image)
                                             <div class="swiper-slide">
-                                                <img src="{{  $image->url }}"/>
+                                                <img src="{{ url($image->url) }}" />
                                             </div>
                                         @endforeach
                                     </div>
@@ -58,23 +59,22 @@
                     </div>
                     <div class="actions">
                         <button onclick="location.href ='{{ route('dashboard.halls.edit', $hall) }}';"
-                                class="button edit">
+                            class="button edit">
                             Edit
                         </button>
                         <button class="button delete"
-                                onclick="return confirm('Are you sure you want to delete this hall?')"
-                                form="delete_hall_{{$hall->id }}">Delete
+                            onclick="return confirm('Are you sure you want to delete this hall?')"
+                            form="delete_hall_{{ $hall->id }}">Delete
                         </button>
-                        <form id="delete_hall_{{$hall->id}}"
-                              action="{{ route('dashboard.halls.destroy', $hall) }}" method="POST"
-                              style="display: none">
+                        <form id="delete_hall_{{ $hall->id }}"
+                            action="{{ route('dashboard.halls.destroy', $hall) }}" method="POST"
+                            style="display: none">
                             @csrf
                             @method('DELETE')
                         </form>
                     </div>
                 </div>
             </div>
-
         @else
             {{ abort(403) }}
         @endif

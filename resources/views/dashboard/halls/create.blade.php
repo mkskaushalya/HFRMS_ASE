@@ -13,7 +13,7 @@
         <x-slot:contentDescription> {{ __('Welcome to hall management dashboard.') }}</x-slot:contentDescription>
         @if($usertype == 'admin')
             <div class="cont">
-                <form method="POST" action="{{ route('dashboard.halls') }}">
+                <form method="POST" action="{{ route('dashboard.halls') }}" enctype="multipart/form-data">
                     @csrf
 
                     @if($errors->any())

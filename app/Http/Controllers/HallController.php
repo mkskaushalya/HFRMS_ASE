@@ -25,6 +25,9 @@ class HallController extends Controller
         $end_time = $request->end_time;
         $data = true;
 
+
+
+
         if ($location == null || $date == null || $start_time == null || $end_time == null) {
             $halls = Hall::all();
 

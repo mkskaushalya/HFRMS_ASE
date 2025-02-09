@@ -33,8 +33,8 @@ class ProfileController extends Controller
         }
 
         if ($request->hasFile('profile_picture')) {
-            if ($request->user()->profile_picture) {
-                unlink(public_path($request->user()->profile_picture));
+            if (file_exists(public_path(Auth::user()->profile_picture))) {
+                unlink(public_path(Auth::user()->profile_picture));
             }
             $image = $request->file('profile_picture');
             $extension = $image->getClientOriginalExtension();

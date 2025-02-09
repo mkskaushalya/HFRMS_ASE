@@ -11,16 +11,16 @@
         <x-slot:header>{{ __('Dashboard') }} </x-slot:header>
         <x-slot:contentTitle> {{ __('Edit Hall') }}</x-slot:contentTitle>
         <x-slot:contentDescription> {{ __('Welcome to hall management dashboard.') }}</x-slot:contentDescription>
-        @if($usertype == 'admin')
+        @if ($usertype == 'admin')
             <div class="cont">
-                <form method="POST" action="{{ route('dashboard.halls.show', $hall)}}">
+                <form method="POST" action="{{ route('dashboard.halls.show', $hall) }}" enctype="multipart/form-data">
                     @csrf
                     @method('PATCH')
 
-                    @if($errors->any())
+                    @if ($errors->any())
                         <div class="input-box">
                             <ul>
-                                @foreach($errors->all() as $error)
+                                @foreach ($errors->all() as $error)
                                     <li style="color: red">{{ $error }}</li>
                                 @endforeach
                             </ul>
@@ -30,27 +30,26 @@
                     <div class="input-box">
                         <label for="hall_number">Hall Number *</label>
                         <input type="text" value="{{ $hall->hall_number }}" name="hall_number" id="hall_number"
-                               placeholder="Enter Hall Number" required>
+                            placeholder="Enter Hall Number" required>
                     </div>
 
                     <div class="input-box">
                         <label for="name">Hall Name *</label>
-                        <input type="text" name="name" id="name" placeholder="Enter Hall Name" value="{{ $hall->name }}"
-                               required>
+                        <input type="text" name="name" id="name" placeholder="Enter Hall Name"
+                            value="{{ $hall->name }}" required>
                     </div>
 
                     <div class="input-box">
                         <label for="description">Description</label>
-                        <textarea name="description" id="description"
-                                  placeholder="Enter Hall Description">{{ $hall->description }}</textarea>
+                        <textarea name="description" id="description" placeholder="Enter Hall Description">{{ $hall->description }}</textarea>
                     </div>
 
                     <div class="input-box">
                         <label for="location">Location *</label>
                         <select name="location" id="location" required>
-                            @foreach($locations as $location )
-                                <option value="{{ $location->id }}"
-                                        @if($location->id == $hall->hall_location_id) selected @endif>{{ $location->location }}</option>
+                            @foreach ($locations as $location)
+                                <option value="{{ $location->id }}" @if ($location->id == $hall->hall_location_id) selected @endif>
+                                    {{ $location->location }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -58,15 +57,13 @@
                     <div class="input-box">
                         <label for="capacity">Capacity *</label>
                         <input type="number" value="{{ $hall->capacity }}" name="capacity" id="capacity"
-                               placeholder="Enter Hall Capacity"
-                               required>
+                            placeholder="Enter Hall Capacity" required>
                     </div>
 
                     <div class="input-box">
                         <label for="price">Price *</label>
                         <input type="number" value="{{ $hall->price }}" name="price" id="price"
-                               placeholder="Enter Hall Price"
-                               required>
+                            placeholder="Enter Hall Price" required>
                     </div>
 
                     <div class="input-box">
@@ -80,7 +77,6 @@
 
                 </form>
             </div>
-
         @else
             {{ abort(403) }}
         @endif

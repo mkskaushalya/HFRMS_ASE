@@ -70,24 +70,33 @@ class DashboardController extends Controller
         return response()->view('dashboard.halls.create', ['locations' => $locations]);
     }
 
-    public function storeHall(): RedirectResponse
+    public function storeHall(Request $request): RedirectResponse
     {
-        $data = request()->validate([
+        $request->validate([
             'name' => 'required',
             'hall_number' => 'required',
             'description' => 'required',
             'capacity' => 'required',
+            'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg,webp', 'max:2048'],
             'price' => 'required',
             'location' => 'required',
         ]);
 
+        $image = $request->file('image');
+        $extension = $image->getClientOriginalExtension();
+        $filename = request('hall_number') . "_" . time() . '.' . $extension;
+        $path = "img/halls/";
+        $image->move($path, $filename);
+
+
         Hall::create([
-            'name' => $data['name'],
-            'hall_number' => $data['hall_number'],
-            'description' => $data['description'],
-            'capacity' => $data['capacity'],
-            'price' => $data['price'],
-            'hall_location_id' => $data['location'],
+            'name' => $request['name'],
+            'hall_number' => $request['hall_number'],
+            'description' => $request['description'],
+            'capacity' => $request['capacity'],
+            'price' => $request['price'],
+            'image' => $path . $filename,
+            'hall_location_id' => $request['location'],
             'user_id' => $this->user->id,
         ]);
 
@@ -108,15 +117,30 @@ class DashboardController extends Controller
             'hall_number' => 'required',
             'description' => 'required',
             'capacity' => 'required',
+            'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg,webp', 'max:2048'],
             'price' => 'required',
             'location' => 'required',
         ]);
+
+        if (request('image')) {
+            //Delete the old image
+            $old_image = $hall->image;
+            $old_image = str_replace('img/halls/', '', $old_image);
+            unlink('img/halls/' . $old_image);
+
+            $image = request()->file('image');
+            $extension = $image->getClientOriginalExtension();
+            $filename = request('hall_number') . "_" . time() . '.' . $extension;
+            $path = "img/halls/";
+            $image->move($path, $filename);
+        }
 
         $hall->update([
             'name' => $data['name'],
             'hall_number' => $data['hall_number'],
             'description' => $data['description'],
             'capacity' => $data['capacity'],
+            'image' => $path . $filename,
             'price' => $data['price'],
             'hall_location_id' => $data['location'],
         ]);

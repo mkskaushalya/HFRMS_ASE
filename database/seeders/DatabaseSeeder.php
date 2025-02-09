@@ -43,6 +43,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::factory(10)->create();
+        
         $this->call(HallLocationSeeder::class);
         Hall::factory(10)->create();
         HallImage::factory(50)->create();
