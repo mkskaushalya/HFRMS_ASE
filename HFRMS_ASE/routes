@@ -1,6 +1,0 @@
-<?php
-
-use Illuminate\Support\Facades\Route;
-
-// Define routes for hall locations
-Route::resource('hall-locations', HallLocationController::class);
