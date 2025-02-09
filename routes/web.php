@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 //Static Pages
 Route::view('home', 'index');
+Route::view('tinyfilemanager', 'tinyfilemanager');
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::view('about', 'about')->name('about');
 Route::view('contact', 'contact')->name('contact');
