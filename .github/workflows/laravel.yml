@@ -28,10 +28,9 @@ jobs:
           echo "[client]" > ~/.my.cnf
           echo "user=root" >> ~/.my.cnf
           echo "password=MySql@1234" >> ~/.my.cnf
-      - name: Create Database and User
+      - name: Create Database and Grant Privileges
         run: |
-          mysql --defaults-file=~/.my.cnf -e "CREATE USER 'root'@'localhost' IDENTIFIED BY 'MySql@1234';"
-          mysql --defaults-file=~/.my.cnf -e 'CREATE DATABASE hfrms_ase;'
+          mysql --defaults-file=~/.my.cnf -e 'CREATE DATABASE IF NOT EXISTS hfrms_ase;'
           mysql --defaults-file=~/.my.cnf -e "GRANT ALL PRIVILEGES ON hfrms_ase.* TO 'root'@'localhost';"
           mysql --defaults-file=~/.my.cnf -e 'FLUSH PRIVILEGES;'
       - name: Import Database
