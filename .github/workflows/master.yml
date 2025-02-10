@@ -2,7 +2,7 @@ name: 🚀 Deploy website on push to CPanel
 on:
   push:
     branches:
-      - production
+      - main
 jobs:
   FTP-Deploy-Action:
     name: FTP-Deploy-Action
