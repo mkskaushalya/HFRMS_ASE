@@ -2,7 +2,7 @@
     <section id="hero">
         <div class="cont">
             <div class="hero-content">
-                <h1>Find the best place for you</h1>
+                <h1>Find the best place for You</h1>
                 <p>Find the best halls for you and book now</p>
                 <div class="search-form">
                     <form action="{{ route('halls') }}" method="GET">
