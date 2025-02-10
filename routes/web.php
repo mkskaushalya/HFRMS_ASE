@@ -32,6 +32,11 @@ Route::get('/clear-cache', function () {
     return 'Cache cleared';
 });
 
+Route::get('/migrate-fresh-seed', function () {
+    Artisan::call('migrate:fresh --seed');
+    return 'Database migrated and seeded';
+});
+
 
 //Static Pages
 Route::view('home', 'index');
