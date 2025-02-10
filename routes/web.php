@@ -13,6 +13,25 @@ use App\Models\Hall;
 use App\Models\HallLocation;
 use App\Models\Review;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
+
+
+//Artisan Commands
+Route::get('/clear-routes', function () {
+    Artisan::call('route:clear');
+    return 'Routes cleared';
+});
+
+Route::get('/optimize-app', function () {
+    Artisan::call('optimize');
+    return 'Application optimized';
+});
+
+Route::get('/clear-cache', function () {
+    Artisan::call('cache:clear');
+    return 'Cache cleared';
+});
+
 
 //Static Pages
 Route::view('home', 'index');
