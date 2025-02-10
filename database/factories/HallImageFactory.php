@@ -21,7 +21,7 @@ class HallImageFactory extends Factory
             'user_id' => 1,
             'title' => fake()->sentence,
             'status' => 'active',
-            'url' => fake()->imageUrl(),
+            'url' =>  "img/halls/" . fake()->numberBetween(1, 11) . '.jpg',
         ];
     }
 }

@@ -62,7 +62,7 @@
                         @endif
                         @foreach ($hall->hallImages as $image)
                             <div class="swiper-slide">
-                                <img src="{{  url($image->url)  }}" />
+                                <img src="{{ url($image->url) }}" />
                             </div>
                         @endforeach
                     </div>
@@ -141,7 +141,7 @@
             <div class="availability">
                 <div class="search-form">
                     @php
-                                                
+
                         if (Auth::check()) {
                             $hallBookingActionURL = route('halls.booking.temp', $hall);
                             $hallShowActionURL = route('halls.show', $hall);
@@ -150,11 +150,10 @@
                             $hallShowActionURL = route('login');
                         }
 
-                        if(env('APP_ENV') == 'production'){
+                        if ($_SERVER['SERVER_NAME'] == 'hfrms.tute.lk') {
                             $hallBookingActionURL = str_replace('http://', 'https://', $hallBookingActionURL);
                             $hallShowActionURL = str_replace('http://', 'https://', $hallShowActionURL);
                         }
-
 
                     @endphp
                     <input type="hidden" value="{{ $hallBookingActionURL }}" id="hallBookingActionURL">
@@ -200,7 +199,7 @@
                         </div>
 
                     </form>
-                    
+
                     {{-- <input type="hidden" value="{{ route('halls.booking.temp', $hall) }}" id="hallBookingActionURL"> --}}
                     {{-- <input type="hidden" value="{{ route('halls.show', $hall) }}" id="hallShowActionURL"> --}}
 

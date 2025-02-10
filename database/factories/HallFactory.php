@@ -25,7 +25,7 @@ class HallFactory extends Factory
             'price' => fake()->numberBetween(15000, 50000),
             'description' => fake()->paragraph,
             'status' => 'active',
-            'image' => fake()->imageUrl(),
+            'image' => "img/halls/".fake()->numberBetween(1, 11) . '.jpg',
             'user_id' => 1,
         ];
 

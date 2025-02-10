@@ -8,17 +8,17 @@
         <x-slot:header>{{ __('Dashboard') }} </x-slot:header>
         <x-slot:contentTitle> {{ __('Edit User') }}</x-slot:contentTitle>
         <x-slot:contentDescription> {{ __('Welcome to users management dashboard.') }}</x-slot:contentDescription>
-        @if($usertype == 'admin')
+        @if ($usertype == 'admin')
             <div class="cont">
-                <form method="POST" autocomplete="off" action="{{ route('dashboard.users.show', $user)}}">
+                <form method="POST" autocomplete="off" action="{{ route('dashboard.users.show', $user) }}">
                     @csrf
                     @method('PATCH')
 
 
-                    @if($errors->any())
+                    @if ($errors->any())
                         <div class="input-box">
                             <ul>
-                                @foreach($errors->all() as $error)
+                                @foreach ($errors->all() as $error)
                                     <li style="color: red">{{ $error }}</li>
                                 @endforeach
                             </ul>
@@ -27,51 +27,50 @@
                     <div class="input-box">
                         <label for="firstname">First Name *</label>
                         <input type="text" value="{{ $user->firstname }}" name="firstname" id="firstname"
-                               placeholder="Sahan" required>
+                            placeholder="Sahan" required>
                     </div>
 
                     <div class="input-box">
                         <label for="lastname">Last Name *</label>
                         <input type="text" value="{{ $user->lastname }}" name="lastname" id="lastname"
-                               placeholder="Enter Hall Name" required>
+                            placeholder="Enter Hall Name" required>
                     </div>
 
                     <div class="input-box">
                         <label for="phone">Phone *</label>
-                        <input type="tel" name="phone" value="{{ $user->phone }}" id="phone" placeholder="+94712345678"
-                               required>
+                        <input type="tel" name="phone" value="{{ $user->phone }}" id="phone"
+                            placeholder="+94712345678" required>
                     </div>
 
                     <div class="input-box">
                         <label for="address">Address *</label>
                         <input type="text" name="address" value="{{ $user->address }}" id="address"
-                               placeholder="Enter Address" required>
+                            placeholder="Enter Address" required>
                     </div>
 
                     <div class="input-box">
                         <label for="email">Email *</label>
                         <input type="email" name="email" value="{{ $user->email }}" id="email"
-                               placeholder="user@email.com" required>
+                            placeholder="user@email.com" required>
                     </div>
 
                     <div class="input-box">
                         <label for="password">Password * (If you do not want to change the password, leave that box
                             blank.) </label>
-                        <input type="password" name="password" value="" id="password" placeholder="Password"
-                               required>
+                        <input type="password" name="password" value="" id="password" placeholder="Password">
                     </div>
 
                     <div class="input-box">
                         <label for="status">Confirm Password *</label>
-                        <input type="password" name="password_confirmation" id="password" placeholder="Confirm Password"
-                               required>
+                        <input type="password" name="password_confirmation" id="password"
+                            placeholder="Confirm Password">
                     </div>
 
                     <div class="input-box">
                         <label for="usertype">User Type *</label>
                         <select name="usertype" id="usertype" required>
-                            <option value="admin" @if($user->usertype == "admin") selected @endif>Admin</option>
-                            <option value="user" @if($user->usertype == "user") selected @endif>User</option>
+                            <option value="admin" @if ($user->usertype == 'admin') selected @endif>Admin</option>
+                            <option value="user" @if ($user->usertype == 'user') selected @endif>User</option>
                         </select>
                     </div>
 
@@ -81,7 +80,6 @@
 
                 </form>
             </div>
-
         @else
             {{ abort(403) }}
         @endif
