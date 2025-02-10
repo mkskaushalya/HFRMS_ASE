@@ -140,6 +140,26 @@
             </div>
             <div class="availability">
                 <div class="search-form">
+                    @php
+                                                
+                        if (Auth::check()) {
+                            $hallBookingActionURL = route('halls.booking.temp', $hall);
+                            $hallShowActionURL = route('halls.show', $hall);
+                        } else {
+                            $hallBookingActionURL = route('login');
+                            $hallShowActionURL = route('login');
+                        }
+
+                        if(env('APP_ENV') == 'production'){
+                            $hallBookingActionURL = str_replace('http://', 'https://', $hallBookingActionURL);
+                            $hallShowActionURL = str_replace('http://', 'https://', $hallShowActionURL);
+                        }
+
+
+                    @endphp
+                    <input type="hidden" value="{{ $hallBookingActionURL }}" id="hallBookingActionURL">
+                    <input type="hidden" value="{{ $hallShowActionURL }}" id="hallShowActionURL">
+
                     <form
                         @if (Auth::check()) action="{{ $values['form_type'] && $hallAvailability ? route('halls.booking.temp', $hall) : route('halls.show', $hall) }}{{ $values['form_type'] && $hallAvailability ? '#hall-availability' : '' }}"
                             method="{{ $values['form_type'] && $hallAvailability ? 'POST' : 'GET' }}"
@@ -180,18 +200,7 @@
                         </div>
 
                     </form>
-                    @php
-                        if (Auth::check()) {
-                            $hallBookingActionURL = route('halls.booking.temp', $hall);
-                            $hallShowActionURL = route('halls.show', $hall);
-                        } else {
-                            $hallBookingActionURL = route('login');
-                            $hallShowActionURL = route('login');
-                        }
-
-                    @endphp
-                    <input type="hidden" value="{{ $hallBookingActionURL }}" id="hallBookingActionURL">
-                    <input type="hidden" value="{{ $hallShowActionURL }}" id="hallShowActionURL">
+                    
                     {{-- <input type="hidden" value="{{ route('halls.booking.temp', $hall) }}" id="hallBookingActionURL"> --}}
                     {{-- <input type="hidden" value="{{ route('halls.show', $hall) }}" id="hallShowActionURL"> --}}
 
