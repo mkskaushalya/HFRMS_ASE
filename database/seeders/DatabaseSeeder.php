@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
             'address' => 'Kosgama, Sri Lanka',
             'email' => 'mkskaushalya@gmail.com',
             'password' => bcrypt('12345678'),
+            'profile_picture' => '/img/users/1.jpg',
         ]);
 
         //Admin User
@@ -40,6 +41,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@tute.lk',
             'password' => bcrypt('12345678'),
             'usertype' => 'admin',
+            'profile_picture' => '/img/users/admin.png',
         ]);
 
         User::factory(10)->create();

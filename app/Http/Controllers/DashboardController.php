@@ -137,17 +137,28 @@ class DashboardController extends Controller
             $filename = request('hall_number') . "_" . time() . '.' . $extension;
             $path = "img/halls/";
             $image->move($path, $filename);
+
+            $hall->update([
+                'name' => $data['name'],
+                'hall_number' => $data['hall_number'],
+                'description' => $data['description'],
+                'capacity' => $data['capacity'],
+                'image' => $path . $filename,
+                'price' => $data['price'],
+                'hall_location_id' => $data['location'],
+            ]);
+        }else{
+            $hall->update([
+                'name' => $data['name'],
+                'hall_number' => $data['hall_number'],
+                'description' => $data['description'],
+                'capacity' => $data['capacity'],
+                'price' => $data['price'],
+                'hall_location_id' => $data['location'],
+            ]);
         }
 
-        $hall->update([
-            'name' => $data['name'],
-            'hall_number' => $data['hall_number'],
-            'description' => $data['description'],
-            'capacity' => $data['capacity'],
-            'image' => $path . $filename,
-            'price' => $data['price'],
-            'hall_location_id' => $data['location'],
-        ]);
+        
 
         return response()->redirectTo(route('dashboard.halls.show', $hall));
     }
