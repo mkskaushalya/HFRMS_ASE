@@ -161,7 +161,7 @@
                     <input type="hidden" value="{{ $hallShowActionURL }}" id="hallShowActionURL">
 
                     <form
-                        @if (Auth::check()) action="{{ $values['form_type'] && $hallAvailability ? route('halls.booking.temp', $hall) : route('halls.show', $hall) }}{{ $values['form_type'] && $hallAvailability ? '#hall-availability' : '' }}"
+                        @if (Auth::check()) action="{{ $values['form_type'] && $hallAvailability ? $hallBookingActionURL : $hallShowActionURL }}{{ $values['form_type'] && $hallAvailability ? '#hall-availability' : '' }}"
                             method="{{ $values['form_type'] && $hallAvailability ? 'POST' : 'GET' }}"
                         @else
                             action="{{ route('login') }}"
